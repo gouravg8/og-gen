@@ -1,4 +1,4 @@
-import express from 'express';
+import express,{Request,Response} from 'express';
 import cors from 'cors';
 import { connect } from 'mongoose';
 import Data from './dbSchema';
@@ -27,7 +27,7 @@ main().catch(err => console.log(err));
 
 
 // initialize db with  data present in data.json file
-app.post('/api/init-db', async (req, res) => {
+app.post('/api/init-db', async (req:Request, res:Response) => {
   try {
     const data = JSON.parse(await readFile('./data.json', 'utf-8'));
     await Data.insertMany(data);
@@ -41,7 +41,7 @@ app.post('/api/init-db', async (req, res) => {
 })
 
 // get all posts
-app.get('/api/posts', async (req, res) => {
+app.get('/api/posts', async (req: Request, res: Response) => {
   try {
     const out = await Data.find();
     res.json(out);
@@ -51,7 +51,7 @@ app.get('/api/posts', async (req, res) => {
 })
 
 // get a post by id
-app.get('/api/post/:id', async (req, res) => {
+app.get('/api/post/:id', async (req: Request, res: Response) => {
   const postId = req.params.id;
   try {
     const post = await Data.findById(postId);
