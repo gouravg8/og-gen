@@ -8,10 +8,7 @@ type Props = {
   params: { id: string };
 };
 
-export async function generateMetadata(
-  { params }: Props,
-  request: Request
-): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(params.id);
   const currentUrl = "https://localhost:3000/posts/" + params.id;
   return {
