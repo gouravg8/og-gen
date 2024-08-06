@@ -51,9 +51,17 @@ pnpm install
 ```bash
 cd backend
 pnpm run dev
+```
 
-cd ../frontend
+```bash
+cd frontend
 pnpm run dev
+```
+
+6. Hit the API endpoint: using **Postman**, **Thunder client** or any other tool to initialize the database:
+
+```
+POST http://localhost:3001/api/init-db
 ```
 
 ## Technical details:
