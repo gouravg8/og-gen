@@ -1,4 +1,4 @@
-import express,{Request,Response} from 'express';
+import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { connect } from 'mongoose';
 import Data from './dbSchema';
@@ -27,7 +27,7 @@ main().catch(err => console.log(err));
 
 
 // initialize db with  data present in data.json file
-app.post('/api/init-db', async (req:Request, res:Response) => {
+app.post('/api/init-db', async (req: Request, res: Response) => {
   try {
     const data = JSON.parse(await readFile('./data.json', 'utf-8'));
     await Data.insertMany(data);
