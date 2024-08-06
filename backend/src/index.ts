@@ -28,8 +28,8 @@ main().catch(err => console.log(err));
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
-});
 
+})
 // initialize db with  data present in data.json file
 app.post('/api/init-db', async (req: Request, res: Response) => {
   try {

@@ -1,0 +1,8 @@
+{
+  "version": 2,
+  "rewrites": [{ "source": "/src", "destination": "/dist" }],
+  "buildCommand": "pnpm run build",
+  "startCommand": "pnpm run start",
+  "devCommand": "pnpm run dev",
+  "installCommand": "pnpm install"
+}
