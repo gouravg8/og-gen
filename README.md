@@ -6,7 +6,7 @@ This is a news hub application that allows users to view news articles from vari
 main motive of  this project is to impliment the "Open Graph" protocol to to show the preview of the news article when user share the link of the article on social media.
 ```
 
-## Project Link: https://news-hub-2023.netlify.app/
+## Project Link: https://og-gen-umber.vercel.app/
 
 ## Prerequisites
 
