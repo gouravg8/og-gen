@@ -16,9 +16,12 @@ const Page: React.FC = () => {
   >([]);
 
   useEffect(() => {
+    console.log("server", process.env.NEXT_PUBLIC_SERVER_HOST);
+    console.log("frontend", process.env.NEXT_PUBLIC_FRONTEND_VERCEL_URL);
+
     const fetchPost = async () => {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_SERVER_HOST}/api/posts`
+        process.env.NEXT_PUBLIC_SERVER_HOST + "/api/posts"
       );
       setPosts(response.data);
     };
