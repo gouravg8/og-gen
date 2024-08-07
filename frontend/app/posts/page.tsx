@@ -17,7 +17,9 @@ const Page: React.FC = () => {
 
   useEffect(() => {
     const fetchPost = async () => {
-      const response = await axios.get(`http://localhost:3001/api/posts`);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_SERVER_HOST}/api/posts`
+      );
       setPosts(response.data);
     };
 

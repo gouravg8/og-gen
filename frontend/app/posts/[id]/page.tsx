@@ -10,7 +10,7 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPost(params.id);
-  const currentUrl = "https://localhost:3000/posts/" + params.id;
+  const currentUrl = process.env.NEXT_PUBLIC_FRONTEND_VERCEL_URL + "/posts/" + params.id;
   return {
     title: post.title,
     openGraph: {
@@ -24,9 +24,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// "use client";
 const page = async ({ params }: { params: { id: string } }) => {
-  //   "use client";
   //   calling the function to fetch the data
   const post = await getPost(params.id);
 
@@ -55,7 +53,6 @@ const page = async ({ params }: { params: { id: string } }) => {
           {post.description.length > 500
             ? post.description.slice(0, 500) + "..."
             : post.description}
-          {/* {post.description} */}
         </p>
       </div>
     </div>

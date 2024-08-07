@@ -24,10 +24,11 @@ git clone https://github.com/gouravg8/og-gen.git
 2. Make .env file and add the following environment variables:
 
 ```
+# backend
 MONGO_URI=your_mongodb_uri
-or
 
-use mine mongodb(cluster) for next few days
+# frontend
+copy variables from .env.example file to .env.local file
 ```
 
 3. Install pnpm
