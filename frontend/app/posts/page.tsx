@@ -1,44 +1,19 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
+import { getAllPosts } from "../actions/post";
 
-const Page: React.FC = () => {
-  const [posts, setPosts] = useState<
-    {
-      _id: string;
-      title: string;
-      description: string;
-      imageUri: string;
-      postUri: string;
-    }[]
-  >([]);
-
-  useEffect(() => {
-    console.log("server", process.env.NEXT_PUBLIC_SERVER_HOST);
-    console.log("frontend", process.env.NEXT_PUBLIC_FRONTEND_VERCEL_URL);
-
-    const fetchPost = async () => {
-      const response = await axios.get(
-        process.env.NEXT_PUBLIC_SERVER_HOST + "/api/posts"
-      );
-      setPosts(response.data);
-    };
-
-    fetchPost();
-  }, []);
-
-  if (!posts) return <div>No posts found</div>;
-
+const Page = async () => {
+  let posts = await getAllPosts();
+  if (!posts.message) return <div>No posts found</div>;
+  if (!Array.isArray(posts.message)) return <div>this is not array</div>;
   return (
-    <div className="flex flex-col px-8 gap-4 my-6 w-full lg:w-1/3 mx-auto">
-      {posts.map((post, index) => {
+    <div className="flex flex-col px-8 gap-4 mt-24 mb-6 w-full lg:w-1/3 mx-auto">
+      {posts.message.map((post, index) => {
         return (
-          <Link href={`/posts/${post._id}`} key={post.postUri + index}>
+          <Link href={`/posts/${post.id}`} key={post.postUrl + index}>
             <Image
               className="rounded w-full"
-              src={post.imageUri}
+              src={post.image}
               alt={post.title}
               width={0}
               height={0}
