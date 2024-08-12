@@ -1,5 +1,5 @@
 import { getAllPosts, initDb } from "@/app/actions/post";
-import {NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
     const posts = await getAllPosts();
@@ -11,7 +11,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-    const { message } = await initDb();
+    const { message, error } = await initDb();
     let outMessage = message ? "Data inserted" : "Data not inserted";
-    return NextResponse.json({ message: outMessage }, { status: 200 })
+    return NextResponse.json({ message: outMessage, error }, { status: 200 })
 }

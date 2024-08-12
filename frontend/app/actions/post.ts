@@ -22,11 +22,12 @@ export async function getPostById(id: number) {
 
 export async function initDb() {
     try {
-        const data = JSON.parse(await fs.readFile('./posts.json', 'utf-8'))
-        console.log(data);
+        const data = JSON.parse(await fs.readFile('./public/posts.json', 'utf-8'))
+        // console.log(data.length);
 
         const posts = await client.post.createMany({
-            data
+            data: data,
+            skipDuplicates: true,
         })
         return { message: true, posts }
     } catch (error) {
