@@ -23,7 +23,21 @@ export async function generateMetadata({
         url: currentUrl,
         type: "website",
         siteName: "News Hub",
-        images: post?.image,
+        images: [
+          {
+            url:
+              process.env.NEXT_PUBLIC_FRONTEND_VERCEL_URL +
+              "/api/og?title=" +
+              post.title.slice(0, 75) +
+              "&image=" +
+              post.image +
+              "&postUrl=" +
+              currentUrl,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          },
+        ],
       },
     };
   return undefined;
