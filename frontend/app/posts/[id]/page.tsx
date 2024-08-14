@@ -25,10 +25,11 @@ export async function generateMetadata({
         siteName: "News Hub",
         images: [
           {
-            url:
-              process.env.NEXT_PUBLIC_FRONTEND_VERCEL_URL +
-              "/api/og?&image=" +
-              post.image,
+            // url:
+            //   process.env.NEXT_PUBLIC_FRONTEND_VERCEL_URL +    // if images are stored in my storage and domain
+            //   "/api/og?&image=" +
+            //   post.image,
+            url: post.image, // simply adding the image url because it is complete url of image from news portals
             width: 1200,
             height: 630,
             alt: post.title,
