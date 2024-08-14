@@ -2,11 +2,17 @@
 
 This is a news hub application that allows users to view news articles from various sources.
 
-```text
-main motive of  this project is to impliment the "Open Graph" protocol to to show the preview of the news article when user share the link of the article on social media.
-```
+> Main motive of  this project is to impliment the "Open Graph" protocol to to show the preview of the news article when user share the link of the article on social media.
 
-## Project Link: https://og-gen-umber.vercel.app/
+
+### Project Link: https://og-gen-iota.vercel.app/
+
+### Examples
+
+
+![og_poster](https://github.com/user-attachments/assets/bd54f906-f82f-4b84-a903-31dade34ddd1)
+  
+you can verify by taking the url of any post and post over here: https://www.opengraph.xyz/
 
 ## Prerequisites
 
@@ -24,11 +30,8 @@ git clone https://github.com/gouravg8/og-gen.git
 2. Make .env file and add the following environment variables:
 
 ```
-# backend
-MONGO_URI=your_mongodb_uri
-
 # frontend
-copy variables from .env.example file to .env.local file
+copy variables from .env.example file to .env.local file or .env
 ```
 
 3. Install pnpm
@@ -40,36 +43,28 @@ npm install -g pnpm
 4. Install dependencies:
 
 ```bash
-cd backend
-pnpm install
-
-cd ../frontend
 pnpm install
 ```
 
 5. Run project locally:
 
 ```bash
-cd backend
-pnpm run dev
-```
-
-```bash
-cd frontend
 pnpm run dev
 ```
 
 6. Hit the API endpoint: using **Postman**, **Thunder client** or any other tool to initialize the database:
 
 ```
-POST http://localhost:3001/api/init-db
+POST http://localhost:3000/api/posts
 ```
 
 ## Technical details:
 
 - Frontend: Next.js, TypeScript, Tailwind CSS
-- Backend: Node.js, Express.js
-- Database: MongoDB
+- Backend: NextJs(Server Actions and API endpoints)
+- Database: PostgreSQL
+- ORM: Prisma
+- Deployed on: Vercel
 
 ## Features
 
