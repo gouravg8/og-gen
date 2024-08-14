@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "npx prisma generate && npx prisma migrate deploy"
+    "postinstall": "prisma migrate deploy && prisma generate"
   },
   "dependencies": {
     "@nextui-org/card": "^2.0.33",
