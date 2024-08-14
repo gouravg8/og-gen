@@ -11,7 +11,7 @@ export async function getAllPosts() {
     }
 }
 
-export async function getPostById(id: number) {
+export async function getPostById(id: string) {
     try {
         const post = await client.post.findFirst({ where: { id } })
         return { message: post, error: false };

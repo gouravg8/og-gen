@@ -5,7 +5,7 @@ import CopyLink from "@/components/CopyLink";
 import { getPostById } from "@/app/actions/post";
 
 type Props = {
-  params: { id: number };
+  params: { id: string };
 };
 
 export async function generateMetadata({
@@ -23,15 +23,25 @@ export async function generateMetadata({
         url: currentUrl,
         type: "website",
         siteName: "News Hub",
-        images: post?.image,
+        images: [
+          {
+            url:
+              process.env.NEXT_PUBLIC_FRONTEND_VERCEL_URL +
+              "/api/og?&image=" +
+              post.image,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          },
+        ],
       },
     };
   return undefined;
 }
 
-const page = async ({ params }: { params: { id: number } }) => {
+const page = async ({ params }: Props) => {
   //   calling the function to fetch the data
-  const { message: post } = await getPostById(Number(params.id));
+  const { message: post } = await getPostById(params.id);
 
   if (!post) return <div>No post found</div>;
 
